@@ -2,149 +2,318 @@
 <html>
 <head>
     <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Nuevo CSS para la página "Gestión de Usuarios" */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía moderna */
-    background: linear-gradient(135deg, #667eea, #764ba2); /* Fondo degradado */
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-}
-
-.container {
-    max-width: 900px;
-    width: 100%;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px); /* Efecto de desenfoque */
-}
-
-h1 {
-    color: #4a47a3; /* Morado elegante */
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 28px;
-}
-
-.back-link {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #4a47a3; /* Morado elegante */
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s ease;
-}
-
-.back-link:hover {
-    color: #3b3a6d; /* Morado más oscuro */
-    text-decoration: underline;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-table th,
-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-table th {
-    background-color: #4a47a3; /* Morado elegante */
-    color: white;
-    font-weight: 600;
-}
-
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-.actions a {
-    margin-right: 10px;
-    padding: 8px 12px;
-    background-color: #4a47a3; /* Morado elegante */
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-}
-
-.actions a:hover {
-    background-color: #3b3a6d; /* Morado más oscuro */
-}
-
-.actions a.delete {
-    background-color: #ff4d4d; /* Rojo para eliminar */
-}
-
-.actions a.delete:hover {
-    background-color: #cc0000; /* Rojo más oscuro */
-}
-
-.create-user {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 20px;
-    background-color: #4a47a3; /* Morado elegante */
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.create-user:hover {
-    background-color: #3b3a6d; /* Morado más oscuro */
-}
-
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #20b2aa, #057f78);
+            color: #333;
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 950px;
+            width: 100%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 145, 77, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .container::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 145, 77, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        h1 {
+            color: #057f78;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #20b2aa, #ff914d);
+            border-radius: 2px;
+        }
+        
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #057f78;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+        
+        .back-link:hover {
+            color: #ff914d;
+            transform: translateX(-3px);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        table th,
+        table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #efefef;
+        }
+        
+        table th {
+            background: linear-gradient(135deg, #057f78, #20b2aa);
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        table tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s ease;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .actions a {
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .actions a i {
+            margin-right: 5px;
+        }
+        
+        .actions a:nth-child(1) {
+            background: linear-gradient(135deg, #057f78, #20b2aa);
+            color: white;
+            box-shadow: 0 3px 10px rgba(32, 178, 170, 0.3);
+        }
+        
+        .actions a:nth-child(1):hover {
+            box-shadow: 0 5px 15px rgba(32, 178, 170, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .actions a:nth-child(2) {
+            background: linear-gradient(135deg, #ff5252, #ff1a1a);
+            color: white;
+            box-shadow: 0 3px 10px rgba(255, 82, 82, 0.3);
+        }
+        
+        .actions a:nth-child(2):hover {
+            box-shadow: 0 5px 15px rgba(255, 82, 82, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .create-user {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #ff914d, #ff5722);
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+            margin-top: 20px;
+        }
+        
+        .create-user i {
+            margin-right: 8px;
+        }
+        
+        .create-user:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.4);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        
+        .empty-state i {
+            font-size: 50px;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            table th,
+            table td {
+                padding: 12px 10px;
+                font-size: 14px;
+            }
+            
+            .actions a {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Gestión de Usuarios</h1>
-        <a href="/admin" class="back-link">Regresar</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Iteración para mostrar usuarios -->
-                <tr th:each="usuario : ${usuarios}">
-                    <td th:text="${usuario.id}">ID</td>
-                    <td th:text="${usuario.nombre}">Nombre</td>
-                    <td th:text="${usuario.email}">Email</td>
-                    <td class="actions">
-                        <a th:href="@{'/admin/users/edit/' + ${usuario.id}}">Editar</a>
-                        <a th:href="@{'/admin/users/delete/' + ${usuario.id}}" style="background-color: red;">Eliminar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="/admin/users/edit/0" class="create-user">Crear Nuevo Usuario</a>
+        <div class="header-area">
+            <a href="/admin" class="back-link">
+                <i class="fas fa-arrow-left"></i> Regresar al panel
+            </a>
+            <h1>Gestión de Usuarios</h1>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iteración para mostrar usuarios -->
+                    <tr th:each="usuario : ${usuarios}" th:if="${!#lists.isEmpty(usuarios)}">
+                        <td th:text="${usuario.id}">ID</td>
+                        <td th:text="${usuario.nombre}">Nombre</td>
+                        <td th:text="${usuario.email}">Email</td>
+                        <td class="actions">
+                            <a th:href="@{'/admin/users/edit/' + ${usuario.id}}">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a th:href="@{'/admin/users/delete/' + ${usuario.id}}">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    <!-- Estado vacío si no hay usuarios -->
+                    <tr th:if="${#lists.isEmpty(usuarios)}">
+                        <td colspan="4" class="empty-state">
+                            <i class="fas fa-users-slash"></i>
+                            <p>No se encontraron usuarios en el sistema</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <a href="/admin/users/edit/0" class="create-user">
+            <i class="fas fa-user-plus"></i> Crear Nuevo Usuario
+        </a>
     </div>
 </body>
 </html>
