@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Usuario</title>
+    <style>
+        /* Nuevo CSS para la página de inicio del usuario */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía moderna */
+    background: linear-gradient(135deg, #667eea, #764ba2); /* Fondo degradado */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 450px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    text-align: center;
+}
+
+h1 {
+    color: #4a47a3; /* Morado elegante */
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.message {
+    font-size: 1.2em;
+    color: #555;
+    margin: 20px 0;
+    line-height: 1.5;
+}
+
+.profile-section {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.profile-section h2 {
+    color: #4a47a3; /* Morado elegante */
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.profile-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-section li {
+    margin: 15px 0;
+    font-size: 1em;
+    color: #333;
+}
+
+.profile-section li strong {
+    color: #4a47a3; /* Morado elegante */
+}
+
+.logout-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #4a47a3; /* Morado elegante */
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.logout-link:hover {
+    color: #3b3a6d; /* Morado más oscuro */
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido, Usuario</h1>
+        <div class="message">
+            Esta es tu página principal. Aquí puedes consultar tu información personal.
+        </div>
+
+        <div class="profile-section">
+            <h2>Información del Perfil</h2>
+            <ul>
+                <li><strong>Nombre:</strong> <span th:text="${nombre}"></span></li>
+                <li><strong>Email:</strong> <span th:text="${email}"></span></li>
+                <li><strong>Rol:</strong> <span th:text="${rol}"></span></li>
+            </ul>
+        </div>
+
+        <a href="/logout" class="logout-link">Cerrar sesión</a>
+    </div>
+</body>
+</html>
